@@ -80,5 +80,5 @@ script:
   - dig +short @$TEST_NGINX_RESOLVER openresty.org || exit 0
   - dig +short @$TEST_NGINX_RESOLVER agentzh.org || exit 0
   - ping -c 10 8.8.8.8
-  - telnet 8.8.8.8 80
+  - telnet 8.8.8.8 81
   - prove -r t
