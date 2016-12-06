@@ -22,6 +22,7 @@ __DATA__
     content_by_lua_block {
             local sock = ngx.socket.tcp()
             local ok, err = sock:connect("8.8.8.8", 80)
+            ngx.say(ok)
             ngx.say(err)
     }
 
@@ -40,6 +41,7 @@ timeout
     content_by_lua_block {
             local sock = ngx.socket.tcp()
             local ok, err = sock:connect("8.8.8.8", 80)
+            ngx.say(ok)
             ngx.say(err)
     }
 
@@ -59,6 +61,7 @@ lua tcp socket connect timed out
             local sock = ngx.socket.udp()
             local ok, err = sock:setpeername("8.8.8.8", 80)
             ok, err = sock:receive()
+            ngx.say(ok)
             ngx.say(err)
     }
 
@@ -77,6 +80,7 @@ lua udp socket read timed out
     content_by_lua_block {
             local sock = ngx.socket.udp()
             local ok, err = sock:setpeername("8.8.8.8", 80)
+            ngx.say(ok)
             ok, err = sock:receive()
             ngx.say(err)
     }
