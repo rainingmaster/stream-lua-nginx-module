@@ -80,8 +80,8 @@ lua udp socket read timed out
     content_by_lua_block {
             local sock = ngx.socket.udp()
             local ok, err = sock:setpeername("8.8.8.8", 80)
-            ngx.say(ok)
             ok, err = sock:receive()
+            ngx.say(ok)
             ngx.say(err)
     }
 
