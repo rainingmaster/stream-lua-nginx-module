@@ -25,7 +25,6 @@ __DATA__
     content_by_lua_block {
             local sock = ngx.socket.tcp()
             local ok, err = sock:connect("agentzh.org", 12345)
-            ngx.say(ok)
             ngx.say(err)
     }
 
@@ -45,7 +44,6 @@ timeout
     content_by_lua_block {
             local sock = ngx.socket.tcp()
             local ok, err = sock:connect("agentzh.org", 12345)
-            ngx.say(ok)
             ngx.say(err)
     }
 
@@ -66,7 +64,6 @@ lua tcp socket connect timed out
             local sock = ngx.socket.udp()
             local ok, err = sock:setpeername("agentzh.org", 12345)
             ok, err = sock:receive()
-            ngx.say(ok)
             ngx.say(err)
     }
 
@@ -87,7 +84,6 @@ lua udp socket read timed out
             local sock = ngx.socket.udp()
             local ok, err = sock:setpeername("agentzh.org", 12345)
             ok, err = sock:receive()
-            ngx.say(ok)
             ngx.say(err)
     }
 
