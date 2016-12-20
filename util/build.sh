@@ -27,7 +27,7 @@ ngx-build $force $version \
             --with-stream_ssl_module \
             --with-stream \
             --with-ipv6 \
-            --add-module=$root/../lua-nginx-module \
+            --add-module=$root/../socket-get-module \
             --add-module=$root/../echo-nginx-module \
             --add-module=$root/../memc-nginx-module \
             --add-module=$root/../headers-more-nginx-module \

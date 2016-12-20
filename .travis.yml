@@ -48,9 +48,9 @@ install:
   - git clone https://github.com/openresty/no-pool-nginx.git ../no-pool-nginx
   - git clone https://github.com/simpl/ngx_devel_kit.git ../ndk-nginx-module
   - git clone https://github.com/openresty/mockeagain.git
-  - git clone https://github.com/openresty/test-nginx.git
+  - git clone -b without_ngx_http_lua_dependent https://github.com/rainingmaster/test-nginx.git
   - git clone -b v2.1-agentzh https://github.com/openresty/luajit2.git
-  - git clone https://github.com/openresty/lua-nginx-module.git ../lua-nginx-module
+  - git clone https://github.com/rainingmaster/socket-get-module.git ../socket-get-module
   - git clone https://github.com/openresty/echo-nginx-module.git ../echo-nginx-module
   - git clone https://github.com/openresty/memc-nginx-module.git ../memc-nginx-module
   - git clone https://github.com/openresty/headers-more-nginx-module.git ../headers-more-nginx-module
