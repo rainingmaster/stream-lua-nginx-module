@@ -323,7 +323,7 @@ ngx_module_t  ngx_stream_lua_module = {
     ngx_stream_lua_commands,               /* module directives */
     NGX_STREAM_MODULE,                     /* module type */
     NULL,                                  /* init master */
-    NULL,                                  /* init module */
+    ngx_stream_lua_init_module,            /* init module */
     ngx_stream_lua_init_worker,            /* init process */
     NULL,                                  /* init thread */
     NULL,                                  /* exit thread */
@@ -361,7 +361,6 @@ ngx_stream_lua_create_main_conf(ngx_conf_t *cf)
      *      lmcf->requires_rewrite = 0;
      *      lmcf->requires_access = 0;
      *      lmcf->requires_log = 0;
-     *      lmcf->requires_shm = 0;
      */
 
     lmcf->pool = cf->pool;
@@ -596,8 +595,6 @@ ngx_stream_lua_lowat_check(ngx_conf_t *cf, void *post, void *data)
 static ngx_int_t
 ngx_stream_lua_init(ngx_conf_t *cf)
 {
-    ngx_int_t                   rc;
-    volatile ngx_cycle_t       *saved_cycle;
     ngx_stream_lua_main_conf_t *lmcf;
 #ifndef NGX_LUA_NO_FFI_API
     ngx_pool_cleanup_t         *cln;
@@ -627,20 +624,6 @@ ngx_stream_lua_init(ngx_conf_t *cf)
             ngx_conf_log_error(NGX_LOG_ERR, cf, 0,
                                "failed to initialize Lua VM");
             return NGX_ERROR;
-        }
-
-        if (!lmcf->requires_shm && lmcf->init_handler) {
-            saved_cycle = ngx_cycle;
-            ngx_cycle = cf->cycle;
-
-            rc = lmcf->init_handler(cf->log, lmcf, lmcf->lua);
-
-            ngx_cycle = saved_cycle;
-
-            if (rc != NGX_OK) {
-                /* an error happened */
-                return NGX_ERROR;
-            }
         }
 
         dd("Lua VM initialized!");

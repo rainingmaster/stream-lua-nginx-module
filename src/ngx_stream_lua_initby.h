@@ -11,6 +11,8 @@
 #include "ngx_stream_lua_common.h"
 
 
+ngx_int_t ngx_stream_lua_init_module(ngx_cycle_t *cycle);
+
 ngx_int_t ngx_stream_lua_init_by_inline(ngx_log_t *log,
     ngx_stream_lua_main_conf_t *lmcf, lua_State *L);
 

@@ -169,7 +169,6 @@ struct ngx_stream_lua_main_conf_s {
     ngx_stream_lua_semaphore_mm_t       *semaphore_mm;
 
     unsigned                             requires_access:1;
-    unsigned                             requires_shm:1;
 };
 
 
